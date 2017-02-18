@@ -1,0 +1,772 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<title>Blipkart</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#myNav
+    		{
+    			height: 10vh;
+    			background: orange;
+    			padding: 2vh 6vw;
+    		}
+
+    		#navToggleButtonOpen, #navToggleButtonClose
+    		{
+    			height: 6vh;
+    			width: 12vw;
+    			background-color: white;
+    			border: 0px transparent;
+    			padding: 0px;
+    			border-radius: 7px;
+    		}
+
+    		#navTogglePic
+    		{
+    			height: inherit;
+    			width: inherit;
+    		}
+
+    		#brandPlaceholder, #pageNamePlaceholder
+    		{
+    			position: absolute;
+    			top: 2.5vh;
+    			left: 24vw;
+    			height: 4vh;
+    			font-size: 4vh;
+    			font-weight: bold;
+    			color: white;
+    		}
+
+    		#navPanel
+    		{
+    			position: fixed;
+    			width: 70%;
+    			height: 100%;
+    			left: -75%;
+    			top: 0px;
+    			background-color: grey;
+    			padding: 0px;
+    			z-index: 1;
+    			box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.7);
+    		}
+
+    		#userPictureImage
+    		{
+    			border-radius: 50%;
+    			background-color: white;
+    			height: 10vh;
+    			width: 17.5vw;
+    			border: 1px solid white;
+    		}
+
+    		#pageNameDiv
+    		{
+    			text-align: center;
+    			padding-top: 0vh;
+    			vertical-align: middle;
+    			height: 10vh;
+    			font-size: 3vh;
+    			width: 70%;
+    			position: absolute;
+    			top: 20px;
+    			right: 0px;
+    		}
+
+    		.myLine
+    		{
+    			background-color: white;
+    			width: 100%;
+    			height: 1px;
+    			padding: 0px;
+    			text-align: center;
+    		}
+
+    		.navPanelButton
+    		{
+    			width: 100%;
+    			height: 7vh;
+    			text-align: left;
+    			background-color: grey;
+    			border: none;
+    			font-size: 20px;
+    			padding-left: 25px;
+    		}
+
+    		#navPanelSearch
+    		{
+    			height: 8vh;
+    			background-color: grey;
+    			border: none;
+    		}
+
+    		#searchPicture
+    		{
+    			height: 80%;
+    			width: 25%;
+
+    		}
+
+    		#myNavPanelNav
+    		{
+    			height: 10vh;
+    			background: grey;
+    			padding: 2vh 6vw;
+    		}
+
+    		#searchPanel
+    		{
+    			position: fixed;
+    			width: 70%;
+    			height: 100%;
+    			left: -75%;
+    			top: 0px;
+    			background-color: grey;
+    			padding: 0px;
+    			z-index: 1;
+    			box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.7);
+    		}
+
+    		#searchBar
+    		{
+    			width: 100%;
+    			height: 10vh;
+    			text-align: center;
+    			padding: 20px;
+    		}
+
+    		#searchBarInput
+    		{
+    			width: 80%;
+    			border: none;
+    			font-size: 20px;
+    			height: 5vh;
+    			padding: 5px;
+    		}
+
+    		#searchInstruction
+    		{
+    			margin-top: 7.5vh;
+    			font-size: 20px;
+    			color: white;
+    			font-weight: bolder;
+    			margin-left: 15%;
+    		}
+
+    		#searchResultOptions
+    		{
+    			position: absolute;
+    			width: 100%;
+    			top: 25vh;
+    			text-align: center;
+    			display: block;
+    			background-color: rgba(255, 255, 255, 0.7);
+    			height: 75vh;
+    			overflow-y: scroll;
+    		}
+
+    		.searchResultButton
+    		{
+    			font-size: 20px;
+    			padding: 10px;
+    			background: transparent;
+    			color: black;
+    			border: none;    			
+    		}
+
+    		#searchFixed
+    		{
+    			position: fixed;
+    		}
+
+    		#closeNavButton
+    		{
+    			position: fixed;
+    			margin: 10px;
+    			right: 0px;
+    			background: none;
+    			border: none;
+    			color: rgba(255, 255, 255, 0.8);
+    		}
+
+    		#filterPanel
+    		{
+    			position: fixed;
+    			width: 70%;
+    			height: 100%;
+    			left: -75%;
+    			top: 0px;
+    			background-color: grey;
+    			padding: 0px;
+    			z-index: 1;
+    			box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.7);
+    		}
+
+    		#filterHead
+    		{
+    			height: 10vh;
+    			width: 100%;
+    			color: white;
+    			font-weight: bold;
+    			background-color: purple;
+    			font-size: 5vh;
+    			padding: 10px;
+    			padding-left: 25px;
+    		} 
+
+			/*Chrome*/
+			@media screen and (-webkit-min-device-pixel-ratio:0) {
+			    input[type='range'] {
+			      overflow: hidden;
+			      width: 80px;
+			      -webkit-appearance: none;
+			      background-color: #9a905d;
+			    }
+			    
+			    input[type='range']::-webkit-slider-runnable-track {
+			      height: 10px;
+			      -webkit-appearance: none;
+			      color: #13bba4;
+			      margin-top: -1px;
+			    }
+			    
+			    input[type='range']::-webkit-slider-thumb {
+			      width: 10px;
+			      -webkit-appearance: none;
+			      height: 10px;
+			      cursor: ew-resize;
+			      background: #434343;
+			      box-shadow: -80px 0 0 80px #43e5f7;
+			    }
+
+			}
+			/** FF*/
+			input[type="range"]::-moz-range-progress {
+			  background-color: #9a905d; 
+			}
+			input[type="range"]::-moz-range-track {  
+			  background-color: #43e5f7;
+			}
+			/* IE*/
+			input[type="range"]::-ms-fill-lower {
+			  background-color: #9a905d; 
+			}
+			input[type="range"]::-ms-fill-upper {  
+			  background-color: #43e5f7;
+			}
+
+			#filterSearchCategories, #filterSearchWebsites
+			{
+				height: 25vh;
+				font-size: 3vh;
+				overflow-y: scroll;
+				background-color: #E5E5E5;
+			}
+			
+			.filterSearchOption
+			{
+				margin: 10px 10px;
+			}
+
+			#filters
+			{
+				padding: 10%;
+			}
+			 	
+			#filterPanelClose
+			{
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				font-size: 20px;
+				margin: 20px;
+				font-weight: normal;
+				filter: alpha(0.8);
+			}
+			
+#categories {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+</style>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<div class="container-fluid">
+<div id="myNav">
+			<button id="navToggleButtonOpen">
+				<img id="navTogglePic" src="img/navbarOpen.png" /> 
+			</button>
+			<div id="brandPlaceholder">
+				Blipkart
+			</div>
+	   	</div>
+	   	<div id="navPanel">
+	   		<div id="myNavPanelNav">
+				<button id="navToggleButtonClose">
+					<img id="navTogglePic" src="img/navbarClose.png" /> 
+				</button>
+				<div id="pageNamePlaceholder">
+					Page Name
+				</div>
+		   	</div>
+	   		<div class="myLine"></div>
+	   		<br />
+	   		<button class="navPanelButton" id="navPanelSearch">
+	   			<span>
+	   				<img src="img/searchPicture.png" id="searchPicture">
+	   			</span>
+	   			Search
+	   		</button>
+	   		<br />
+	   		<div class="myLine"></div>
+	   		<br />
+	   		<button class="navPanelButton">
+	   			<span>
+	   				<img src="img/searchPicture.png" id="searchPicture">
+	   			</span>
+	   			Link 1
+	   		</button>
+	   		<br />
+	   		<div class="myLine"></div>
+	   		<button class="navPanelButton">
+	   			<span>
+	   				<img src="img/searchPicture.png" id="searchPicture">
+	   			</span>
+	   			Link 2
+	   		</button>
+	   		<br />
+	   		<div class="myLine"></div>
+	   		<button class="navPanelButton">
+	   			<span>
+	   				<img src="img/searchPicture.png" id="searchPicture">
+	   			</span>
+	   			Link 3
+	   		</button>
+	   		<br />
+	   		<div class="myLine"></div>
+	   		<button class="navPanelButton">
+	   			<span>
+	   				<img src="img/searchPicture.png" id="searchPicture">
+	   			</span>
+	   			Link 4
+	   		</button>
+	   		<br />
+	   		<div class="myLine"></div>
+	   		<button class="navPanelButton" id="navPanelFilter">
+	   			<span>
+	   				<img src="img/filterPicture.png" id="searchPicture">
+	   			</span>
+	   			Filter
+	   		</button>
+	   		<br />
+	   		<div class="myLine"></div>	   		
+	   	</div>
+	   	<div id="searchPanel">
+	   		<button id="closeNavButton">
+	   			Close X
+	   		</button>
+	   		<div id="searchFixed">
+		   		<div id="searchInstruction">
+		   			Enter query:
+		   		</div>
+		   		<div id="searchBar">
+		   			<input type="text" name="search" id="searchBarInput" />			
+		   		</div>
+		   	</div>
+	   		<div id="searchResultOptions">
+	   			<button class="searchResultButton">
+	   				Option 1
+	   			</button>
+	   			<br />
+	   			<button class="searchResultButton">
+	   				Option 2
+	   			</button>
+	   			<br />
+	   			<button class="searchResultButton">
+	   				Option 3
+	   			</button>
+	   			<br />
+	   			<button class="searchResultButton">
+	   				Option 3
+	   			</button>
+	   			<br />
+	   			<button class="searchResultButton">
+	   				Option 4
+	   			</button>
+	   			<br />
+	   			<button class="searchResultButton">
+	   				Option 5
+	   			</button>
+	   			<br />
+	   			<button class="searchResultButton">
+	   				Option 6
+	   			</button>
+	   			<br />
+	   			<button class="searchResultButton">
+	   				Option 7
+	   			</button>
+	   			<br />
+	   			<button class="searchResultButton">
+	   				Option 8
+	   			</button>
+	   			<br />
+	   			<button class="searchResultButton">
+	   				Option 9
+	   			</button>
+	   			<br />
+	   			<button class="searchResultButton">
+	   				Option 10
+	   			</button>
+	   			<br />
+	   		</div>
+	   	</div>
+	   	<div id="filterPanel">
+	   		<div id="filterHead">
+	   			Filter
+	   			<div id="filterPanelClose">
+	   				Close X
+	   			</div>
+	   		</div>
+	   		<div id="filters">
+	   			<br />
+	   			<div id="filterPriceRangeMin">
+	   				<label for="priceRange">
+	   					Price Range Minimum
+	   				</label>
+	   				<br />
+	   				<input type="range" name="priceRange" id="filterPriceRangeMinInput" min="0" max="400" />
+	   			</div>
+	   			<br />
+	   			<div id="filterPriceRangeMax">
+	   				<label for="priceRange">
+	   					Price Range Maximum
+	   				</label>
+	   				<br />
+	   				<input type="range" name="priceRange" id="filterPriceRangeMaxInput" min="0" max="400" />
+	   			</div>
+	   			<div class="myLine"></div>
+	   			<br />
+	   			<div id="filterSearchCategory">
+	   				<label for="filterSearchOptions">
+	   					Search by Category
+	   				</label>
+	   				<br />
+	   				<div id="filterSearchCategories">
+	   					<div class="filterSearchOption">
+	   						Option 1
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 2
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 3
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 4
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 5
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 6
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 7
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 8
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 9
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 10
+	   					</div>
+	   				</div>
+	   			</div>
+				<div class="myLine"></div>
+	   			<br />
+	   			<div id="filterSearchWebsite">
+	   				<label for="filterSearchOptions">
+	   					Search by Website
+	   				</label>
+	   				<br />
+	   				<div id="filterSearchWebsites">
+	   					<div class="filterSearchOption">
+	   						Option 1
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 2
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 3
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 4
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 5
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 6
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 7
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 8
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 9
+	   					</div>
+	   					<div class="filterSearchOption">
+	   						Option 10
+	   					</div>
+	   				</div>
+	   			</div>
+	   			<br />	   		
+	   		</div>
+	   	</div>
+        
+<div id="carousel1" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel1" data-slide-to="1"></li>
+      <li data-target="#carousel1" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="item active"><img src="images/Carousel_Placeholder.png" alt="First slide image" class="center-block">
+        <div class="carousel-caption">
+          <h3>First slide Heading</h3>
+          <p>First slide Caption</p>
+        </div>
+      </div>
+      <div class="item"><img src="images/Carousel_Placeholder.png" alt="Second slide image" class="center-block">
+        <div class="carousel-caption">
+          <h3>Second slide Heading</h3>
+          <p>Second slide Caption</p>
+        </div>
+      </div>
+      <div class="item"><img src="images/Carousel_Placeholder.png" alt="Third slide image" class="center-block">
+        <div class="carousel-caption">
+          <h3>Third slide Heading</h3>
+          <p>Third slide Caption</p>
+        </div>
+      </div>
+    </div>
+    <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#carousel1" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>
+  <div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home1" data-toggle="tab" role="tab" aria-controls="tab1">Tab 1</a></li>
+      <li role="presentation"><a href="#paneTwo1" data-toggle="tab" role="tab" aria-controls="tab2">Tab 2</a></li>
+      <li role="presentation"><a href="#paneThree1" data-toggle="tab" role="tab" aria-controls="tab2">Tab 3</a></li>
+      <li role="presentation"><a href="#paneFour1" data-toggle="tab" role="tab" aria-controls="tab2">Categories</a></li>
+      <li role="presentation" class="dropdown">
+        <ul class="dropdown-menu" aria-labelledby="tabDropOne1">
+          <li><a href="#tabDropDownOne1" tabindex="-1" data-toggle="tab">Dropdown Link 1</a></li>
+          <li><a href="#tabDropDownTwo1" tabindex="-1" data-toggle="tab">Dropdown Link 2</a></li>
+        </ul>
+  </li>
+    </ul>
+    <div id="tabContent1" class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="home1">
+<div class="row">
+          <div class="col-md-12">
+            <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+              <div class="caption">
+                <h3>Thumbnail 1 label</h3>
+                <p>Optional content and buttons for Thumbnail #1</p>
+</div>
+            </div>
+          </div>
+        </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="paneTwo1">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+              <div class="caption">
+                <h3>Thumbnail 1 label</h3>
+                <p>Optional content and buttons for Thumbnail #1</p>
+</div>
+            </div>
+          </div>
+        </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="paneThree1">
+<div class="row">
+          <div class="col-md-12">
+            <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+              <div class="caption">
+                <h3>Thumbnail 1 label</h3>
+                <p>Optional content and buttons for Thumbnail #1</p>
+</div>
+            </div>
+          </div>
+        </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+      <div class="caption">
+        <h3>Thumbnail 1 label</h3>
+        <p>Optional content and buttons for Thumbnail #1</p>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="paneFour1">
+<div class="row" id="categories">
+          <div class="col-xs-4"><img src="images/shop.jpg" class="img-rounded img-responsive" alt="Placeholder image"></div>
+          <div class="col-xs-4"><img src="images/recharge.png" class="img-rounded img-responsive" alt="Placeholder image"></div>
+          <div class="col-xs-4"><img src="images/movie.png" class="img-rounded img-responsive" alt="Placeholder image"></div>
+        </div>
+        <div class="row" id="categories">
+          <div class="col-xs-4"><img src="images/travel.jpg" class="img-rounded img-responsive" alt="Placeholder image"></div>
+          <div class="col-xs-4"><img src="images/other_offer.png" class="img-rounded img-responsive" alt="Placeholder image"></div>
+          <div class="col-xs-4"><img src="images/hotel.png" class="img-rounded img-responsive" alt="Placeholder image"></div>
+        </div>
+        <div class="row" id="categories">
+          <div class="col-xs-4"><img src="images/food.png" class="img-rounded img-responsive" alt="Placeholder image"></div>
+          <div class="col-xs-4"><img src="images/bank.png" class="img-rounded img-responsive" alt="Placeholder image"></div>
+          <div class="col-xs-4"><img src="images/cash_back.png" class="img-rounded img-responsive" alt="Placeholder image"></div>
+        </div>
+        <div class="row" id="categories2">
+          <div class="col-xs-4"><img src="images/feedback.png" class="img-rounded img-responsive" alt="Placeholder image"></div>
+          <div class="col-xs-4"><img src="images/store.jpg" class="img-rounded img-responsive" alt="Placeholder image"></div>
+          <div class="col-xs-4"><img src="images/coupon.png" class="img-rounded img-responsive" alt="Placeholder image"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/justTheNavWithFilter.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
