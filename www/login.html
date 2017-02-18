@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <title>Login</title>
+    	
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+       	<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+
+    	<style type="text/css">
+
+            #background
+            {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                min-height: 100%;
+                background: linear-gradient(#BBACC1, #9C9583);
+            }
+
+    		#loginHeader
+    		{
+    			margin-top: 5%;
+    			font-size: 5vh;
+    			width: 100%;
+    			text-align: center;
+    			font-family: 'Oswald', sans-serif;
+                font-weight: bold;
+    		}
+
+    		#loginMain
+    		{
+    			text-align: center;
+    		}
+
+    		#loginFacebook
+    		{
+    			color: white;
+    			background-color: purple;
+    		}
+
+    		#loginFacebook:hover, #loginFacebook:active
+    		{
+    			background-color: lightblue;
+    		}    
+
+            #footer
+            {
+                position: absolute;
+                bottom: 0px;
+                padding: 20px;
+                text-align: center;
+                width: 100%;
+            }
+
+            #footer 
+                a
+                {
+                    color: white;
+                }
+
+            #signupButton
+            {
+                width: 50%;
+                background-color: #37392E;
+                border-color: transparent;
+                font-family: 'Oswald', sans-serif;
+                font-weight: bolder;
+                font-size: 3vh;
+                color: #8EF9F3;
+            }
+
+    	</style>
+
+    </head>
+    <body>
+        <div id="background">
+        	<div id="loginHeader">
+        		Login
+        	</div>
+        	<div id="loginMain">
+        	<br />
+        	<br />
+    		<form method="POST" action="">
+        		<dl>
+        			<dt>
+        				Email Address
+        			</dt>
+        			<dd>
+        				<input type="text" name="emailAddress" />
+        			</dd>
+        			<br />
+        			<dt>
+        				Password
+        			</dt>
+        			<dd>
+        				<input type="password" name="password" />
+        			</dd>
+        			<br />
+        		</dl>
+        		<div>
+        			<button class="btn btn-default btn-lg" id="signupButton">Sign up</button>
+        		</div>
+    		</form>
+        	<br />
+            <br />
+        	- OR -
+        	<br />
+        	<br />
+        	<br />
+            <a href="https://www.facebook.com/dialog/oauth?client_id=285436591810412&redirect_uri=http%3A%2F%2Fblipkart.com%2Fwelcome%2Flogin&state=b929c7760620ee962da54c8178ee33ae&sdk=php-sdk-3.2.3&scope=email">
+        		<button class="btn btn-default btn-lg" id="loginFacebook">Login with Facebook</button>
+        	</a>
+        	<br />
+        	<br />
+            <div id="footer">
+            	<a href="index.html">
+            		Home
+            	</a>
+            	&nbsp;|&nbsp;
+            	<a href="">
+            		Forgot Password?
+            	</a>
+            	&nbsp;|&nbsp;
+            	<a href="register.html">
+            		Create Account
+            	</a>
+            </div>
+        	</div>
+    	    <br />
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

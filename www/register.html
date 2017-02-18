@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <title>Register</title>
+    	
+    	<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+
+    	<style type="text/css">
+
+            #background
+            {
+                background: linear-gradient(#68B0AB, #3B8EA5);
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                min-height: 100%;
+            }
+
+    		#loginHeader
+    		{
+    			margin-top: 5%;
+    			font-size: 5vh;
+    			width: 100%;
+    			text-align: center;
+    			font-family: sans-serif;
+                font-weight: bold;
+    		}
+
+    		#loginMain
+    		{
+    			text-align: center;
+    		}
+
+    		#loginFacebook
+    		{
+    			color: white;
+    			background-color: purple;
+    		}
+
+    		#loginFacebook:hover, #loginFacebook:active
+    		{
+    			background-color: lightblue;
+    		}    	
+
+            #formRegister
+            {
+                text-align: left;
+                width: 100%;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            #formRegister 
+                input
+                {
+                    width: 75%;
+                }
+
+            #signupButton
+            {
+                text-align: right;
+            }    
+
+            #acceptAgreements
+            {
+                text-align: justify;
+                padding: 15px;
+            }
+
+            #manualHeader
+            {
+                font-size: 4vh;
+            }
+
+            #mainPassword
+            {
+                display: inline-table;
+            }
+
+            .passwordStrength
+            {
+                margin: 0px;
+                margin-top: 10px;
+                width: 18%;
+                height: 20px;
+                border: 1px solid black;
+                display: inline-block;
+            }
+
+            #strength0, #strength1, #strength2, #strength3, #strength4
+            {
+                background: rgb(255, 255, 255)
+            }
+
+            #footer
+            {
+                position: absolute;
+                bottom: 0px;
+                padding: 20px;
+                text-align: center;
+                width: 100%;
+            }
+
+            #footer 
+                a
+                {
+                    color: white;
+                }
+
+    	</style>
+
+    </head>
+    <body>
+        <div id="background">
+        	<div id="loginHeader">
+        		Register
+        	</div>
+        	<div id="loginMain">
+            <br />
+            <br />
+            <a href="https://www.facebook.com/dialog/oauth?client_id=285436591810412&redirect_uri=http%3A%2F%2Fblipkart.com%2Fwelcome%2Flogin&state=b929c7760620ee962da54c8178ee33ae&sdk=php-sdk-3.2.3&scope=email">
+                <button class="btn btn-default btn-lg" id="loginFacebook">Login with Facebook</button>
+            </a>
+            <br />
+            <br />
+            - OR -
+            <br />
+            <br />
+            <div id="manualHeader">
+                Create a new account
+            </div>
+            <br />
+    		<form method="POST" action="" id="formRegister">
+        		<dl>
+        			<dt>
+        				Name
+        			</dt>
+        			<dd>
+        				<input type="text" name="name" id="name" required />
+        			</dd>
+        			<br />
+        			<dt>
+        				Email Address
+        			</dt>
+        			<dd>
+        				<input type="text" name="emailAddress" id="emailAddress" required />
+        			</dd>
+        			<br />
+                    <dt>
+                        Mobile
+                    </dt>
+                    <dd>
+                        <input type="number" name="mobileNumber" id="mobileNumber" required/>
+                    </dd>
+                    <br />
+                    <dt>
+                        Password
+                    </dt>
+                    <dd>
+                        <input type="password" name="emailAddress" id="mainPassword" required />
+                    </dd>
+                    <div class="passwordStrength" id="strength0"></div>
+                    <div class="passwordStrength" id="strength1"></div>
+                    <div class="passwordStrength" id="strength2"></div>
+                    <div class="passwordStrength" id="strength3"></div>
+                    <div class="passwordStrength" id="strength4"></div>
+                    <br />
+                    <br />
+                    <dt>
+                        Confirm Password
+                    </dt>
+                    <dd>
+                        <input type="password" name="emailAddress" id="confirmPassword" />
+                        <div id="passwordMatch"></div>
+                    </dd>
+                    <br />
+        		</dl>
+        		<div id="signupButton">
+        			<button class="btn btn-default btn-lg" id="submitButton">Sign up</button>
+        		</div>
+    		</form>
+        	<p id="acceptAgreements">
+                By clicking "Sign up", you certify that you are at least 13 years old, and agree to our <a style="color: white">Privacy Policy</a> and <a style="color: white">Terms of Service</a>. 
+                <br />
+                Having trouble? Get help.
+            </p>
+            <br />
+        	<div id="footer">
+                <a href="index.html">
+                    Home
+                </a>
+                &nbsp;|&nbsp;
+                <a href="">
+                    Forgot Password?
+                </a>
+                &nbsp;|&nbsp;
+                <a href="register.html">
+                    Create Account
+                </a>
+            </div>
+        	</div>
+            <br />
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/register.js"></script>
+    </body>
+</html>
