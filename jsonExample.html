@@ -10,7 +10,8 @@
 		 		$.getJSON("getBlipkart.php", function(result) {
 		 			$.each(result, function(i, field){
 		 				$("#output").append("Sno: "+ field.sno + "<br/>Type: "+field.type +"<br/>Code:"+field.code+"<br/>Category:"+field.category+"<br/>Sub category:"+field.sub_category+"<br/>City:"+field.city+"<br/>Website:"+field.website+"<br/>Name:"+field.name+"<br/>Link:"+field.link+"<br/>Price:"+field.price+"<br/>Discount:"+field.discount+"<br/>Rating:"+field.rating+"<br/>URL:"+field.url+"<br/>Image:"+field.image+"<br/>Date:"+field.date+"<br/><br/><br/>");	
-		 			});
+		 				// we don't need this in our code. We can directly use result.
+					});
 		 		});
 		 	});
 
