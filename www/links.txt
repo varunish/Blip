@@ -1,0 +1,5 @@
+androidBlipkart.php?home=featured_deals
+androidBlipkart.php?home=home_offers
+androidBlipkart.php?home=trending_deals
+androidBlipkart.php?home=hot_deals
+androidBlipkart.php?home=top_deals

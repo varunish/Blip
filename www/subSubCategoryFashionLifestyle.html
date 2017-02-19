@@ -28,45 +28,357 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-
-
         <meta name="format-detection" content="telephone=no">
-
         <meta name="msapplication-tap-highlight" content="no">
-
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <title>Fashion & Lifestyle</title>
-    	
-    	<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+        <title>Blipkart</title>
+        
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
 
-    	<style type="text/css">
+        <style type="text/css">
+
+            #body
+            {
+                background: linear-gradient(#0A1128, #5E048A, #5E048A);
+                position: relative;
+                min-height: 640px;
+                height: 100%;
+            }
+
+            #myNav
+            {
+                height: 10vh;
+                background: #0A1128;
+                padding: 2vh 6vw;
+            }
+
+            #navToggleButtonOpen, #navToggleButtonClose
+            {
+                height: 6vh;
+                width: 12vw;
+                background-color: white;
+                border: 0px transparent;
+                padding: 0px;
+                border-radius: 7px;
+            }
+
+            #navTogglePic
+            {
+                height: inherit;
+                width: inherit;
+            }
+
+            #brandPlaceholder, #pageNamePlaceholder
+            {
+                position: absolute;
+                top: 2.5vh;
+                left: 24vw;
+                height: 4vh;
+                font-size: 4vh;
+                font-weight: bold;
+                color: white;
+            }
+
+            #navPanel
+            {
+                position: fixed;
+                width: 70%;
+                height: 100%;
+                left: -75%;
+                top: 0px;
+                background-color: lightgrey;
+                padding: 0px;
+                z-index: 1;
+                box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.7);
+            }
+
+            #userPictureImage
+            {
+                border-radius: 50%;
+                background-color: white;
+                height: 10vh;
+                width: 17.5vw;
+                border: 1px solid white;
+            }
+
+            #pageNameDiv
+            {
+                text-align: center;
+                padding-top: 0vh;
+                vertical-align: middle;
+                height: 10vh;
+                font-size: 3vh;
+                width: 70%;
+                position: absolute;
+                top: 20px;
+                right: 0px;
+            }
+
+            .myLine
+            {
+                background-color: white;
+                width: 100%;
+                height: 1px;
+                padding: 0px;
+                text-align: center;
+            }
+
+            .navPanelButton
+            {
+                width: 100%;
+                height: 7vh;
+                text-align: left;
+                background-color: lightgrey;
+                border: none;
+                font-size: 20px;
+                padding-left: 25px;
+            }
+
+            #navPanelSearch
+            {
+                height: 8vh;
+                background-color: lightgrey;
+                border: none;
+            }
+
+            #searchPicture
+            {
+                height: 80%;
+                width: 25%;
+
+            }
+
+            #myNavPanelNav
+            {
+                height: 10vh;
+                background: grey;
+                padding: 2vh 6vw;
+            }
+
+            #searchPanel
+            {
+                background-color: rgba(0, 0, 0, 0.9);
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                opacity: 0;
+                z-index: -1; /*0*/
+            }
+
+            #searchBar
+            {
+                width: 100%;
+                height: 10vh;
+                text-align: center;
+                padding: 20px;
+            }
+
+            #searchBarInput
+            {
+                width: 80%;
+                border: none;
+                font-size: 20px;
+                height: 5vh;
+                padding: 5px;
+            }
+
+            #searchInstruction
+            {
+                margin-top: 7.5vh;
+                font-size: 20px;
+                color: white;
+                font-weight: bolder;
+                margin-left: 15%;
+            }
+
+            #searchResultOptions
+            {
+                position: absolute;
+                width: 100%;
+                top: 25vh;
+                text-align: center;
+                display: block;
+                background-color: rgba(255, 255, 255, 0.7);
+                height: 75vh;
+                overflow-y: scroll;
+            }
+
+            .searchResultButton
+            {
+                font-size: 20px;
+                padding: 10px;
+                background: transparent;
+                color: black;
+                border: none;
+                
+            }
+
+            #searchFixed
+            {
+                position: fixed;
+            }
+
+            #closeNavButton
+            {
+                position: fixed;
+                margin: 10px;
+                right: 0px;
+                background: none;
+                border: none;
+                color: (255, 255, 255, 0.8);
+            }
 
             .optionButton
             {
                 width: 100%;
-                height: 10vh;
-                background-color: white;
-                border: 1px black solid;
+                height: 12.5vh;
+                background-color: #03B84F;
+                border: 0px solid #03B84F;
                 margin: 5px 0px;
+                border-radius: 15px;
             }
 
             .categoriesDiv
             {
-            	position: absolute;
-            	top: 0%;
-            	left: 0%;
-            	margin: 10px;
-           		text-align: center;
-           		font-size: 24px;
-           	}
+                position: relative;
+                top: 0%;
+                left: 0%;
+                margin: 0px 10px;
+                text-align: center;
+                font-size: 24px;
+            }
 
-    	</style>
+        </style>
 
     </head>
     <body>
-    	<div class="container-fluid">
+        <div id="fullNav">
+            <div id="myNav">
+                <button id="navToggleButtonOpen">
+                    <img id="navTogglePic" src="img/navbarOpen.png" /> 
+                </button>
+                <div id="brandPlaceholder">
+                    Blipkart
+                </div>
+            </div>
+            <div class="myLine" style="height: 2px;"></div>
+            <div id="navPanel">
+                <div id="myNavPanelNav">
+                    <button id="navToggleButtonClose">
+                        <img id="navTogglePic" src="img/navbarClose.png" /> 
+                    </button>
+                    <div id="pageNamePlaceholder">
+                        Bank Offers
+                    </div>
+                </div>
+                <div class="myLine"></div>
+                <br />
+                <button class="navPanelButton" id="navPanelSearch">
+                    <span>
+                        <img src="img/searchPicture.png" id="searchPicture">
+                    </span>
+                    Search
+                </button>
+                <br />
+                <div class="myLine"></div>
+                <br />
+                <button class="navPanelButton">
+                    <span>
+                        <img src="img/searchPicture.png" id="searchPicture">
+                    </span>
+                    Link 1
+                </button>
+                <br />
+                <div class="myLine"></div>
+                <button class="navPanelButton">
+                    <span>
+                        <img src="img/searchPicture.png" id="searchPicture">
+                    </span>
+                    Link 2
+                </button>
+                <br />
+                <div class="myLine"></div>
+                <button class="navPanelButton">
+                    <span>
+                        <img src="img/searchPicture.png" id="searchPicture">
+                    </span>
+                    Link 3
+                </button>
+                <br />
+                <div class="myLine"></div>
+                <button class="navPanelButton">
+                    <span>
+                        <img src="img/searchPicture.png" id="searchPicture">
+                    </span>
+                    Link 4
+                </button>
+                <br />
+                <div class="myLine"></div>          
+            </div>
+            <div id="searchPanel">
+                <button id="closeNavButton">
+                    Close X
+                </button>
+                <div id="searchFixed">
+                    <div id="searchInstruction">
+                        Enter query:
+                    </div>
+                    <div id="searchBar">
+                        <input type="text" name="search" id="searchBarInput" />         
+                    </div>
+                </div>
+                <div id="searchResultOptions">
+                    <button class="searchResultButton">
+                        Option 1
+                    </button>
+                    <br />
+                    <button class="searchResultButton">
+                        Option 2
+                    </button>
+                    <br />
+                    <button class="searchResultButton">
+                        Option 3
+                    </button>
+                    <br />
+                    <button class="searchResultButton">
+                        Option 3
+                    </button>
+                    <br />
+                    <button class="searchResultButton">
+                        Option 4
+                    </button>
+                    <br />
+                    <button class="searchResultButton">
+                        Option 5
+                    </button>
+                    <br />
+                    <button class="searchResultButton">
+                        Option 6
+                    </button>
+                    <br />
+                    <button class="searchResultButton">
+                        Option 7
+                    </button>
+                    <br />
+                    <button class="searchResultButton">
+                        Option 8
+                    </button>
+                    <br />
+                    <button class="searchResultButton">
+                        Option 9
+                    </button>
+                    <br />
+                    <button class="searchResultButton">
+                        Option 10
+                    </button>
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div id="body">
             <div class="categoriesDiv">
                 <button class="optionButton" id="optionClothingFootwear">Clothing & Footwear</button>
                 <button class="optionButton" id="optionWatches">Watches</button>
@@ -80,6 +392,8 @@
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/justTheNav.js"></script>
         <script type="text/javascript" src="js/subSubCategoryFashionLifestyle.js"></script>
     </body>
 </html>
+

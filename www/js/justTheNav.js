@@ -50,7 +50,8 @@ function navPanelClose()
 function searchPanelOpen()
 {
 	navPanelClose()
-	searchPanelZIndex = 0
+	document.body.style = "overflow: hidden"
+	searchPanelZIndex = 1
 	searchPanel.style = "z-index: " + searchPanelZIndex
 	searchPanelOpenInterval = setInterval(function(){
 		if (searchPanelOpacity < 1)
@@ -67,6 +68,7 @@ function searchPanelOpen()
 
 function searchPanelClose()
 {
+	document.body.style = "overflow: visible"
 	searchPanelCloseInterval = setInterval(function(){
 		if (searchPanelOpacity > 0)
 		{

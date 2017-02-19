@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>READ JSON Example (getJSON)</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript">
+
+		 	$(document).ready(function() {
+		 		$.getJSON("getBlipkart.json", function(result) {
+		 			$.each(result, function(i, field){
+		 				$("#output").append("Sno: "+ field.sno + "<br/>Type: "+field.type +"<br/>Code:"+field.code+"<br/>Category:"+field.category+"<br/>Sub category:"+field.sub_category+"<br/>City:"+field.city+"<br/>Website:"+field.website+"<br/>Name:"+field.name+"<br/>Link:"+field.link+"<br/>Price:"+field.price+"<br/>Discount:"+field.discount+"<br/>Rating:"+field.rating+"<br/>URL:"+field.url+"<br/>Image:"+field.image+"<br/>Date:"+field.date+"<br/><br/><br/>");	
+		 			});
+		 		});
+		 	});
+
+		
+
+	 	</script>
+	</head>
+	<body>
+		<div id="output"></div>
+	</body>
+</html>
