@@ -25,7 +25,24 @@
 	
 	$db = mysqli_select_db($conn, 'BlipkartDB');
 
-	$query = 'SELECT sno, type, code, category, sub_category, city, website, name, link, price, discount, rating, url, image, date FROM tbl_facts';
+	if(isset($_GET['home']))
+	{
+		$query = "SELECT sno, type, code, category, sub_category, city, website, name, link, price, discount, rating, url, image, date FROM tbl_facts WHERE ".$_GET['home']." = 'Yes' LIMIT 200";
+	}
+	else
+	if (isset($_GET['city']))
+	{
+		$query = "SELECT sno, type, code, category, sub_category, city, website, name, link, price, discount, rating, url, image, date FROM tbl_facts WHERE city LIKE '%".$_GET['city']."%' LIMIT 200";
+	}
+	else
+	if (isset($_GET['topBrands']))
+	{
+		$query = 'SELECT sno, type, code, category, sub_category, city, website, name, link, price, discount, rating, url, image, date  FROM tbl_facts WHERE name LIKE "%'.$_GET['topBrands'].'%"';
+	}
+	else
+	{
+		$query = 'SELECT sno, type, code, category, sub_category, city, website, name, link, price, discount, rating, url, image, date FROM tbl_facts';
+	}
 
 	$result = mysqli_query($conn, $query);
 	
