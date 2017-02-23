@@ -1,0 +1,19 @@
+#myNav
+    		{
+	height: 10vh;
+	background: #5E048A;
+	padding: 2vh 6vw;
+    		}
+
+#filterHead
+    		{
+	height: 10vh;
+	width: 100%;
+	color: white;
+	font-weight: normal;
+	background-color: #5E048A;
+	font-size: 5vh;
+	padding: 10px;
+	padding-left: 50px;
+    		} 
+
