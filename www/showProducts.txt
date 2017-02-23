@@ -1,0 +1,8 @@
+<html>
+<head>
+	<script>
+		query = window.location.href
+		half = query.split('?')
+		query = half[1]
+		
+		"androidBlipkart.php?"+query

@@ -10,12 +10,13 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 <title>Blipkart</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.11.3.min.js"></script>
 <style type="text/css">
 			#myNav
     		{
-    			height: 10vh;
-    			background: orange;
-    			padding: 2vh 6vw;
+	height: 10vh;
+	background: #5E048A;
+	padding: 2vh 6vw;
     		}
 
     		#navToggleButtonOpen, #navToggleButtonClose
@@ -47,15 +48,15 @@
 
     		#navPanel
     		{
-    			position: fixed;
-    			width: 70%;
-    			height: 100%;
-    			left: -75%;
-    			top: 0px;
-    			background-color: grey;
-    			padding: 0px;
-    			z-index: 1;
-    			box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.7);
+	position: fixed;
+	width: 70%;
+	height: 100%;
+	left: -75%;
+	top: 0px;
+	background-color: grey;
+	padding: 0px;
+	z-index: 1;
+	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.7);
     		}
 
     		#userPictureImage
@@ -212,14 +213,14 @@
 
     		#filterHead
     		{
-    			height: 10vh;
-    			width: 100%;
-    			color: white;
-    			font-weight: normal;
-    			background-color: purple;
-    			font-size: 5vh;
-    			padding: 10px;
-    			padding-left: 50px;
+	height: 10vh;
+	width: 100%;
+	color: white;
+	font-weight: normal;
+	background-color: #5E048A;
+	font-size: 5vh;
+	padding: 10px;
+	padding-left: 50px;
     		} 
 
 			/*Chrome*/
@@ -290,6 +291,9 @@
 				margin: 20px;
 				font-weight: normal;
 				filter: alpha(0.8);
+			}
+			.nav-tabs, .nav-pills {
+    			text-align:center;
 			}
 			
 #categories {
@@ -614,10 +618,12 @@
     <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#carousel1" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>
   <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#home1" data-toggle="tab" role="tab" aria-controls="tab1">Tab 1</a></li>
-      <li role="presentation"><a href="#paneTwo1" data-toggle="tab" role="tab" aria-controls="tab2">Tab 2</a></li>
-      <li role="presentation"><a href="#paneThree1" data-toggle="tab" role="tab" aria-controls="tab2">Tab 3</a></li>
-      <li role="presentation"><a href="#paneFour1" data-toggle="tab" role="tab" aria-controls="tab2">Categories</a></li>
+      <li role="presentation" class="active"><a href="#home1" aria-controls="tab1" role="tab" data-toggle="tab">Top Deals</a></li>
+      <li role="presentation" class="active">&nbsp;</li>
+      <li role="presentation"><a href="#paneTwo1" aria-controls="tab2" role="tab" data-toggle="tab">Hot Deals</a></li>
+      <li role="presentation">&nbsp;</li>
+      <li role="presentation"><a href="#paneThree1" aria-controls="tab2" role="tab" data-toggle="tab">Featured Deals</a></li>
+      <li role="presentation"><a href="#paneFour1" aria-controls="tab2" role="tab" data-toggle="tab">Categories</a></li>
       <li role="presentation" class="dropdown">
         <ul class="dropdown-menu" aria-labelledby="tabDropOne1">
           <li><a href="#tabDropDownOne1" tabindex="-1" data-toggle="tab">Dropdown Link 1</a></li>
@@ -626,162 +632,44 @@
   </li>
     </ul>
     <div id="tabContent1" class="tab-content">
+      <!--home1 starts her for top deals-->
       <div role="tabpanel" class="tab-pane fade in active" id="home1">
-<div class="row">
-          <div class="col-md-12">
-            <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-              <div class="caption">
-                <h3>Thumbnail 1 label</h3>
-                <p>Optional content and buttons for Thumbnail #1</p>
-</div>
-            </div>
-          </div>
-        </div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
+      <script type="text/javascript">
+
+		 	$(document).ready(function() {
+		 		$.getJSON("getBlipkart.json", function(result) {
+								$.each(result, function(i, field){
+									$("#home1").append("<div class='row'><div class='col-md-4'><div class='thumbnail'><img src='http://www.blipkart.com/public/facts/"+field.image+"'><div class='caption'>"+field.name+"</div></div></div></div>");
+								})
+							})
+						});
+</script>
       </div>
       <div role="tabpanel" class="tab-pane fade" id="paneTwo1">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-              <div class="caption">
-                <h3>Thumbnail 1 label</h3>
-                <p>Optional content and buttons for Thumbnail #1</p>
-</div>
-            </div>
-          </div>
-        </div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
+      
+      <script type="text/javascript">
 
+		 	$(document).ready(function() {
+		 		$.getJSON("getBlipkart.json", function(result) {
+								$.each(result, function(i, field){
+									$("#paneTwo1").append("<div class='row'><div class='col-md-4'><div class='thumbnail'><img src='http://www.blipkart.com/public/facts/"+field.image+"'><div class='caption'>"+field.name+"</div></div></div></div>");
+								})
+							})
+						});
+</script>
       </div>
-      <div role="tabpanel" class="tab-pane fade" id="paneThree1">
-<div class="row">
-          <div class="col-md-12">
-            <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-              <div class="caption">
-                <h3>Thumbnail 1 label</h3>
-                <p>Optional content and buttons for Thumbnail #1</p>
-</div>
-            </div>
-          </div>
-        </div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail"><img src="images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div class="caption">
-        <h3>Thumbnail 1 label</h3>
-        <p>Optional content and buttons for Thumbnail #1</p>
-      </div>
-    </div>
-  </div>
-</div>
+      <div role="tabpanel" class="tab-pane fade" id="paneThree1"> 
+      <script type="text/javascript">
+
+		 	$(document).ready(function() {
+		 		$.getJSON("getBlipkart.json", function(result) {
+								$.each(result, function(i, field){
+									$("#panelThree1").append("<div class='row'><div class='col-md-4'><div class='thumbnail'><img src='http://www.blipkart.com/public/facts/"+field.image+"'><div class='caption'>"+field.name+"</div></div></div></div>");
+								})
+							})
+						});
+</script>
+      
       </div>
       <div role="tabpanel" class="tab-pane fade" id="paneFour1">
 <div class="row" id="categories">
@@ -808,7 +696,7 @@
     </div>
   </div>
 </div>
-<script src="js/jquery-1.11.3.min.js"></script>
+
 <script type="text/javascript" src="js/homeProducts.js"></script>
 <script src="js/bootstrap.js"></script>
 </body>
