@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+
+		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+		<title>Blipkart</title>
+
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+
+		<script src="js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript">
+			var query=window.location.href;
+			var half=query.split('?');
+			query=half[1];
+			var result="androidBlipkart.php?"+query;
+			$(document).ready(function() {
+		 		$.getJSON(result, function(result) {
+								$.each(result, function(i, field){
+									$("#outer").append("<div class='row'><div class='col-md-4'><div class='thumbnail'><img src='http://www.blipkart.com/public/facts/"+field.image+"'><div class='caption'>"+field.name+"</div></div></div></div>");
+								})
+							})
+						});
+</script>
+			
+
+		<style type="text/css">
+			
+			#myNav
+    		{
+				height: 10vh;
+				background: #5E048A;
+				padding: 2vh 6vw;
+    		}
+
+    		#navToggleButtonOpen, #navToggleButtonClose
+    		{
+    			height: 6vh;
+    			width: 12vw;
+    			background-color: white;
+    			border: 0px transparent;
+    			padding: 0px;
+    			border-radius: 7px;
+    		}
+
+    		#navTogglePic
+    		{
+    			height: inherit;
+    			width: inherit;
+    		}
+
+    		#brandPlaceholder, #pageNamePlaceholder
+    		{
+    			position: absolute;
+    			top: 2.5vh;
+    			left: 24vw;
+    			height: 4vh;
+    			font-size: 4vh;
+    			font-weight: bold;
+    			color: white;
+    		}
+
+    		#navPanel
+    		{
+				position: fixed;
+				width: 70%;
+				height: 100%;
+				left: -75%;
+				top: 0px;
+				background-color: grey;
+				padding: 0px;
+				z-index: 1;
+				box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.7);
+    		}
+
+    		#userPictureImage
+    		{
+    			border-radius: 50%;
+    			background-color: white;
+    			height: 10vh;
+    			width: 17.5vw;
+    			border: 1px solid white;
+    		}
+
+    		#pageNameDiv
+    		{
+    			text-align: center;
+    			padding-top: 0vh;
+    			vertical-align: middle;
+    			height: 10vh;
+    			font-size: 3vh;
+    			width: 70%;
+    			position: absolute;
+    			top: 20px;
+    			right: 0px;
+    		}
+
+    		.myLine
+    		{
+    			background-color: white;
+    			width: 100%;
+    			height: 1px;
+    			padding: 0px;
+    			text-align: center;
+    		}
+
+    		.navPanelButton
+    		{
+    			width: 100%;
+    			min-height: 7vh;
+    			text-align: left;
+    			background-color: grey;
+    			border: none;
+    			font-size: 15px;
+    			padding-left: 25px;
+    		}
+
+    		#navPanelSearch, #navPanelDashboard
+    		{
+    			height: 8vh;
+    			background-color: grey;
+    			border: none;
+    		}
+
+    		#searchPicture, #dashboardPicture, #referralsPicture, #feedbackPicture, #productRequestsPicture, #privacyPolicyPicture, #termsConditionsPicture, #filterPicture, #logoutPicture
+    		{
+    			height: 80%;
+    			width: 25%;
+
+    		}
+
+    		#myNavPanelNav
+    		{
+    			height: 10vh;
+    			background: grey;
+    			padding: 2vh 6vw;
+    		}
+
+    		#searchPanel
+    		{
+    			position: fixed;
+    			width: 100%;
+    			height: 100%;
+    			left: 0%;
+    			top: 0px;
+    			background-color: rgba(0, 0, 0, 0.9);
+    			padding: 0px;
+    			z-index: -1;
+    			box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.7);
+    			opacity: 0;
+    		}
+
+    		#searchBar
+    		{
+    			width: 100%;
+    			height: 10vh;
+    			text-align: center;
+    			padding: 20px;
+    		}
+
+    		#searchBarInput
+    		{
+    			width: 80%;
+    			border: none;
+    			font-size: 20px;
+    			height: 5vh;
+    			padding: 5px;
+    		}
+
+    		#searchInstruction
+    		{
+    			margin-top: 7.5vh;
+    			font-size: 20px;
+    			color: white;
+    			font-weight: bolder;
+    			margin-left: 15%;
+    		}
+
+    		#searchResultOptions
+    		{
+    			position: absolute;
+    			width: 100%;
+    			top: 25vh;
+    			text-align: center;
+    			display: block;
+    			background-color: rgba(255, 255, 255, 0.7);
+    			height: 75vh;
+    			overflow-y: scroll;
+    		}
+
+    		.searchResultButton
+    		{
+    			font-size: 20px;
+    			padding: 10px;
+    			background: transparent;
+    			color: black;
+    			border: none;    			
+    		}
+
+    		#searchFixed
+    		{
+    			position: fixed;
+    		}
+
+    		#closeNavButton
+    		{
+    			position: fixed;
+    			margin: 10px;
+    			right: 0px;
+    			background: none;
+    			border: none;
+    			color: rgba(255, 255, 255, 0.8);
+    		}
+
+    		#filterPanel
+    		{
+    			position: fixed;
+    			width: 70%;
+    			height: 100%;
+    			left: -75%;
+    			top: 0px;
+    			background-color: white;
+    			padding: 0px;
+    			z-index: 1;
+    			box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.7);
+    		}
+
+    		#filterHead
+    		{
+				height: 10vh;
+				width: 100%;
+				color: white;
+				font-weight: normal;
+				background-color: #5E048A;
+				font-size: 5vh;
+				padding: 10px;
+				padding-left: 50px;
+    		} 
+
+			/*Chrome*/
+			@media screen and (-webkit-min-device-pixel-ratio:0) {
+			    input[type='range'] {
+			      overflow: hidden;
+			      width: 80px;
+			      -webkit-appearance: none;
+			      background-color: #9a905d;
+			    }
+			    
+			    input[type='range']::-webkit-slider-runnable-track {
+			      height: 10px;
+			      -webkit-appearance: none;
+			      color: #13bba4;
+			      margin-top: -1px;
+			    }
+			    
+			    input[type='range']::-webkit-slider-thumb {
+			      width: 10px;
+			      -webkit-appearance: none;
+			      height: 10px;
+			      cursor: ew-resize;
+			      background: #434343;
+			      box-shadow: -80px 0 0 80px #43e5f7;
+			    }
+
+			}
+			/** FF*/
+			input[type="range"]::-moz-range-progress {
+			  background-color: #9a905d; 
+			}
+			input[type="range"]::-moz-range-track {  
+			  background-color: #43e5f7;
+			}
+			/* IE*/
+			input[type="range"]::-ms-fill-lower {
+			  background-color: #9a905d; 
+			}
+			input[type="range"]::-ms-fill-upper {  
+			  background-color: #43e5f7;
+			}
+
+			#filterSearchCategories, #filterSearchWebsites
+			{
+				height: 25vh;
+				font-size: 3vh;
+				overflow-y: scroll;
+				background-color: #E5E5E5;
+			}
+			
+			.filterSearchOption
+			{
+				margin: 10px 10px;
+			}
+
+			#filters
+			{
+				padding: 10%;
+			}
+			 	
+			#filterPanelClose
+			{
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				font-size: 20px;
+				margin: 20px;
+				font-weight: normal;
+				filter: alpha(0.8);
+			}
+			.nav-tabs, .nav-pills {
+    			text-align:center; 
+			}
+			
+			#categories {
+				margin-top: 50px;
+				margin-bottom: 50px;
+			}
+		
+		</style>
+	</head>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+	<body>
+		<div id="fullNav">
+			<div id="myNav">
+				<button id="navToggleButtonOpen">
+					<img id="navTogglePic" src="img/navbarOpen.png" /> 
+				</button>
+				<div id="brandPlaceholder">
+					Home
+				</div>
+		   	</div>
+		   	<div id="navPanel">
+		   		<div id="myNavPanelNav">
+					<button id="navToggleButtonClose">
+						<img id="navTogglePic" src="img/navbarClose.png" /> 
+					</button>
+					<div id="pageNamePlaceholder">
+						Home
+					</div>
+			   	</div>
+		   		<div class="myLine"></div>
+		   		<br />
+		   		<button class="navPanelButton" id="navPanelSearch">
+		   			<span>
+		   				<img src="img/searchPicture.png" id="searchPicture">
+		   			</span>
+		   			Search
+		   		</button>
+		   		<br />
+		   		<div class="myLine"></div>
+		   		<br />
+		   		<button class="navPanelButton" id="navPanelDashboard">
+		   			<span>
+		   				<img src="img/dashboardPicture.png" id="dashboardPicture">
+		   			</span>
+		   			Dashboard
+		   		</button>
+		   		<br />
+		   		<div class="myLine"></div>
+		   		<button class="navPanelButton">
+		   			<span>
+		   				<img src="img/referralsPicture.png" id="referralsPicture">
+		   			</span>
+		   			Referrals
+		   		</button>
+		   		<br />
+		   		<div class="myLine"></div>
+		   		<button class="navPanelButton">
+		   			<span>
+		   				<img src="img/feedbackPicture.png" id="feedbackPicture">
+		   			</span>
+		   			Feedback
+		   		</button>
+		   		<br />
+		   		<div class="myLine"></div>
+		   		<button class="navPanelButton">
+		   			<span>
+		   				<img src="img/productRequestsPicture.png" id="productRequestsPicture">
+		   			</span>
+		   			Product Requests
+		   		</button>
+		   		<br />
+		 		<div class="myLine"></div>
+		   		<button class="navPanelButton">
+		   			<span>
+		   				<img src="img/privacyPolicyPicture.png" id="privacyPolicyPicture">
+		   			</span>
+		   			Privacy Policy
+		   		</button>
+		   		<br />
+		   		<div class="myLine"></div>
+		   		<button class="navPanelButton">
+		   			<span>
+		   				<img src="img/termsConditionsPicture.png" id="termsConditionsPicture">
+		   			</span>
+		   			Terms & Conditions
+		   		</button>
+		   		<br />
+		   		<div class="myLine"></div>
+		   		<button class="navPanelButton" id="navPanelFilter">
+		   			<span>
+		   				<img src="img/filterPicture.png" id="filterPicture">
+		   			</span>
+		   			Filter
+		   		</button>
+		   		<br />
+		   		<div class="myLine"></div>
+		   		<br />
+		   		<button class="navPanelButton">
+		   			<span>
+		   				<img src="img/logoutPicture.png" id="logoutPicture">
+		   			</span>
+		   			Logout
+		   		</button>
+		   		<br />
+		   		<div class="myLine"></div>	   		
+		   	</div>
+		   	<div id="searchPanel">
+		   		<button id="closeNavButton">
+		   			Close X
+		   		</button>
+		   		<div id="searchFixed">
+			   		<div id="searchInstruction">
+			   			Enter query:
+			   		</div>
+			   		<div id="searchBar">
+			   			<input type="text" name="search" id="searchBarInput" />			
+			   		</div>
+			   	</div>
+		   		<div id="searchResultOptions">
+		   			
+		   		</div>
+		   	</div>
+		   	<div id="filterPanel">
+		   		<div id="filterHead">
+		   			Filter
+		   			<div id="filterPanelClose">
+		   				Close X
+		   			</div>
+		   		</div>
+		   		<div id="filters">
+		   			<br />
+		   			<div id="filterPriceRangeMin">
+		   				<label for="priceRange">
+		   					Price Range Minimum
+		   				</label>
+		   				<br />
+		   				<input type="range" name="priceRange" id="filterPriceRangeMinInput" min="0" max="400" />
+		   			</div>
+		   			<br />
+		   			<div id="filterPriceRangeMax">
+		   				<label for="priceRange">
+		   					Price Range Maximum
+		   				</label>
+		   				<br />
+		   				<input type="range" name="priceRange" id="filterPriceRangeMaxInput" min="0" max="400" />
+		   			</div>
+		   			<div class="myLine"></div>
+		   			<br />
+		   			<div id="filterSearchCategory">
+		   				<label for="filterSearchOptions">
+		   					Search by Category
+		   				</label>
+		   				<br />
+		   				<div id="filterSearchCategories">
+		   					<div class="filterSearchOption">
+		   						Option 1
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 2
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 3
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 4
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 5
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 6
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 7
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 8
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 9
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 10
+		   					</div>
+		   				</div>
+		   			</div>
+					<div class="myLine"></div>
+		   			<br />
+		   			<div id="filterSearchWebsite">
+		   				<label for="filterSearchOptions">
+		   					Search by Website
+		   				</label>
+		   				<br />
+		   				<div id="filterSearchWebsites">
+		   					<div class="filterSearchOption">
+		   						Option 1
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 2
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 3
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 4
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 5
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 6
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 7
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 8
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 9
+		   					</div>
+		   					<div class="filterSearchOption">
+		   						Option 10
+		   					</div>
+		   				</div>
+		   			</div>
+		   			<br />	   		
+		   		</div>
+		   	</div>
+    	</div>
+		<div class="container-fluid" style="padding: 5px;">
+			<div id="carousel1" class="carousel slide" data-ride="carousel" style="z-index: 0;">
+		    	<ol class="carousel-indicators">
+			      <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+			      <li data-target="#carousel1" data-slide-to="1"></li>
+			      <li data-target="#carousel1" data-slide-to="2"></li>
+		    	</ol>		    
+		    	<div class="carousel-inner" role="listbox">
+		      		<div class="item active"><img src="images/Carousel_Placeholder.png" alt="First slide image" class="center-block">
+		        		<div class="carousel-caption">
+		          			<h3>First slide Heading</h3>
+		          			<p>First slide Caption</p>
+		        		</div>
+		      		</div>
+				    <div class="item"><img src="images/Carousel_Placeholder.png" alt="Second slide image" class="center-block">
+				        <div class="carousel-caption">
+				          <h3>Second slide Heading</h3>
+				          <p>Second slide Caption</p>
+				        </div>
+				    </div>
+				    <div class="item"><img src="images/Carousel_Placeholder.png" alt="Third slide image" class="center-block">
+				        <div class="carousel-caption">
+				          <h3>Third slide Heading</h3>
+				          <p>Third slide Caption</p>
+				        </div>
+				    </div>
+				</div>			
+	    		<a class="left carousel-control" href="#carousel1" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#carousel1" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>
+	    	</div>
+			<div id="outer">Content for New div Tag Goes Here</div>
+    </div>
+		<script type="text/javascript" src="js/categories.js"></script>
+		<script type="text/javascript" src="js/homeProducts.js"></script>
+		<script src="js/bootstrap.js"></script>
+	</body>
+</html>
